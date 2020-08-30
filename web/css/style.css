@@ -1,0 +1,19 @@
+body{
+    background-image: url("img/bag.jpg");  
+    background-color: #cccccc;
+}
+.box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    margin-top: 200px;
+
+}
+.box h1{
+    color: aqua;
+    font-family: serif;
+    font-size: 50px;
+    font-style: italic;
+    font-weight: 500 ;
+}
