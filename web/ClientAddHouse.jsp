@@ -66,7 +66,7 @@
         </div>
 
         <section class="regform">
-            <form action="<%=request.getContextPath()%>/ClientRegister" method="post">
+            <form action="<%=request.getContextPath()%>/AddHouse" enctype="multipart/form-data" method="post">
                 <div class="form-row" >
                     <div class="col-md-4 mb-3">
                         <label for="validationServer01">House name</label>
@@ -129,9 +129,8 @@
                 </div>
                 <div class="col-md-3 mb-4">
                     <label for="validationServer04">House Image</label>
-                    <input type="file"
-                           id="avatar" name="avatar"
-                           accept="image/png, image/jpeg">
+                    <input type="file" class="form-control is-invalid"
+                           id="validationServer03" name="photo" required>
                     <div class="invalid-feedback">
                         Please provide a PNG/JPEG Image.
                     </div>

@@ -27,7 +27,11 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet(name = "ClientRegister", urlPatterns = {"/ClientRegister"})
 public class ClientRegister extends HttpServlet {
 
-    Client user = new Client();
+    Client user;
+
+    public ClientRegister() {
+        this.user = new Client();
+    }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
