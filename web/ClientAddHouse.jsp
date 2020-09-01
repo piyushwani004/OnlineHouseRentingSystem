@@ -59,8 +59,7 @@
         <div class="Cheadline">
             <%
                 HttpSession sess = request.getSession(false);
-                sess.getAttribute("fname");
-
+                sess.getAttribute("fname");  
             %>
             <h1> ${fname}</h1>
         </div>
