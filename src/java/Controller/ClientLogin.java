@@ -49,12 +49,13 @@ public class ClientLogin extends HttpServlet {
                 pass = rs.getString(3);
 
                 if (username.equals(user) && password.equals(pass)) {
+                    HttpSession session = request.getSession();
+                    session.setAttribute("fname", fname);
+                    session.setAttribute("username", username);
                     pw.println("<script type=\"text/javascript\">");
                     pw.println("alert('Login Successfully..!');");
                     pw.println("window.location.href = \"Home.jsp\";");
-                    pw.println("</script>");
-                    HttpSession session = request.getSession();
-                    session.setAttribute("fname", fname);
+                    pw.println("</script>");                   
                 }
             }
             pw.println("<script type=\"text/javascript\">");

@@ -1,3 +1,7 @@
+<%@page import="java.sql.ResultSet"%>
+<%@page import="java.sql.Statement"%>
+<%@page import="Database.DatabaseConnection"%>
+<%@page import="java.sql.Connection"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -22,8 +26,14 @@
 
     <body id="page-top">
         <%
+            response.setHeader("Cache-Control", "no-cache,no-store,must-revalidate");
+            response.setHeader("Pragma", "no-cache");
             // HttpSession ses = request.getSession(false);
-            session.getAttribute("fname");
+            String user = (String) session.getAttribute("username");
+            if(session.getAttribute("username")== null)
+            {
+                response.sendRedirect("clientLogin.jsp");
+            }
         %>     
         <!-- Page Wrapper -->
         <div id="wrapper">
@@ -43,7 +53,7 @@
                 <hr class="sidebar-divider my-0">
 
                 <!-- Nav Item - Dashboard -->
-                
+
 
                 <!-- Divider -->
                 <hr class="sidebar-divider">
@@ -54,7 +64,7 @@
                 </div>
 
                 <!-- Nav Item - Pages Collapse Menu -->
-                
+
 
                 <!-- Nav Item - Utilities Collapse Menu -->
                 <li class="nav-item">
@@ -64,11 +74,11 @@
                     </a>
                     <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
                         <div class="bg-white py-2 collapse-inner rounded">
-                            <h6 class="collapse-header">Custom Utilities:</h6>
-                            <a class="collapse-item" href="utilities-color.html">Colors</a>
-                            <a class="collapse-item" href="utilities-border.html">Borders</a>
-                            <a class="collapse-item" href="utilities-animation.html">Animations</a>
-                            <a class="collapse-item" href="utilities-other.html">Other</a>
+                            <h6 class="collapse-header">----</h6>
+                            <a class="collapse-item" href="">----</a>
+                            <a class="collapse-item" href="">----</a>
+                            <a class="collapse-item" href="">----</a>
+                            <a class="collapse-item" href="">----</a>
                         </div>
                     </div>
                 </li>
@@ -82,37 +92,20 @@
                 </div>
 
                 <!-- Nav Item - Pages Collapse Menu -->
-                <li class="nav-item">
-                    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
-                        <i class="fas fa-fw fa-folder"></i>
-                        <span>Pages</span>
-                    </a>
-                    <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
-                        <div class="bg-white py-2 collapse-inner rounded">
-                            <h6 class="collapse-header">Login Screens:</h6>
-                            <a class="collapse-item" href="login.html">Login</a>
-                            <a class="collapse-item" href="register.html">Register</a>
-                            <a class="collapse-item" href="forgot-password.html">Forgot Password</a>
-                            <div class="collapse-divider"></div>
-                            <h6 class="collapse-header">Other Pages:</h6>
-                            <a class="collapse-item" href="404.html">404 Page</a>
-                            <a class="collapse-item" href="blank.html">Blank Page</a>
-                        </div>
-                    </div>
-                </li>
+
 
                 <!-- Nav Item - Charts -->
                 <li class="nav-item">
-                    <a class="nav-link" href="charts.html">
-                        <i class="fas fa-fw fa-chart-area"></i>
-                        <span>Charts</span></a>
+                    <a class="nav-link" href="ClientAddHouse.jsp">
+                        <i class="fas fa-home"></i>
+                        <span>Add House</span></a>
                 </li>
 
                 <!-- Nav Item - Tables -->
                 <li class="nav-item">
-                    <a class="nav-link" href="tables.html">
-                        <i class="fas fa-fw fa-table"></i>
-                        <span>Tables</span></a>
+                    <a class="nav-link" href="">
+                        <i class="fas fa-home"></i>
+                        <span>House Details</span></a>
                 </li>
 
                 <!-- Divider -->
@@ -174,7 +167,7 @@
                                     </form>
                                 </div>
                             </li>                         
-                            
+
                             <div class="topbar-divider d-none d-sm-block"></div>
 
                             <!-- Nav Item - User Information -->
@@ -185,17 +178,9 @@
                                 </a>
                                 <!-- Dropdown - User Information -->
                                 <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-                                    <a class="dropdown-item" href="#">
+                                    <a class="dropdown-item" href="#" data-toggle="modal" data-target="#ProfileModal">
                                         <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                                         Profile
-                                    </a>
-                                    <a class="dropdown-item" href="#">
-                                        <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
-                                        Settings
-                                    </a>
-                                    <a class="dropdown-item" href="#">
-                                        <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
-                                        Activity Log
                                     </a>
                                     <div class="dropdown-divider"></div>
                                     <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
@@ -343,6 +328,105 @@
                     </div>
                 </div>
             </div>
+        </div>
+        <%
+            try {
+                Connection con = DatabaseConnection.initializeDatabase();
+                String s = "select * from clientregister where username like '%" + user + "%' ";
+                Statement st = con.createStatement();
+                ResultSet rs = st.executeQuery(s);
+                while (rs.next()) {
+
+        %>
+        <!-- Profile Modal-->
+        <div class="modal fade" id="ProfileModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document" >
+                <div class="modal-content">
+                    <div class="modal-header" >
+                        <h5 class="modal-title" id="exampleModalLabel">Client Profile</h5>
+                        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                    </div>
+                    <form action="<%=request.getContextPath()%>/EditClientProfile"  method="post" class="modal-body" novalidate>
+                        <div class="form-row">
+                            <div class="col-md-6 mb-3">
+                                <label for="validationCustom01">First name</label>
+                                <input type="text" class="form-control" name="fname" id="validationCustom01" placeholder="First name" value="<%=rs.getString(2)%>">
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="validationCustom02">Last name</label>
+                                <input type="text" class="form-control"  name="lname" id="validationCustom02" placeholder="Last name" value="<%=rs.getString(3)%>">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="col-md-6 mb-3">
+                                <label for="validationCustom04">Email</label>
+                                <input type="text" class="form-control" name="email" id="validationCustom04" placeholder="Email" value="<%=rs.getString(4)%>">
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="validationCustom04">Mobile</label>
+                                <input type="text" class="form-control" name="mobile" id="validationCustom04" placeholder="Mobile" value="<%=rs.getString(5)%>">
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="col-md-6 mb-3">
+                                <label for="validationCustom03">City</label>
+                                <input type="text" class="form-control" name="city" id="validationCustom03" placeholder="City" value="<%=rs.getString(10)%>" >   
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="validationCustom03">Username</label>
+                                <input type="text" class="form-control" name="username" id="validationCustom03" placeholder="Username" value="<%=rs.getString(7)%>" readonly>   
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="col-md-6 mb-3">
+                                <label for="validationCustom03">Gender</label>
+                                <input type="text" class="form-control" name="gender" id="validationCustom03" placeholder="Gender" value="<%=rs.getString(6)%>">       
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="validationCustom05">Address</label>
+                                <input type="text" class="form-control" name="address" id="validationCustom05" placeholder="Address" value="<%=rs.getString(9)%>">
+
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button class="btn btn-primary" type="submit">Submit form</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <%
+                    }
+                } catch (Exception e) {
+
+                }
+            %>
+
+
+
+            <script>
+                // Example starter JavaScript for disabling form submissions if there are invalid fields
+                (function () {
+                    'use strict';
+                    window.addEventListener('load', function () {
+                        // Fetch all the forms we want to apply custom Bootstrap validation styles to
+                        var forms = document.getElementsByClassName('needs-validation');
+                        // Loop over them and prevent submission
+                        var validation = Array.prototype.filter.call(forms, function (form) {
+                            form.addEventListener('submit', function (event) {
+                                if (form.checkValidity() === false) {
+                                    event.preventDefault();
+                                    event.stopPropagation();
+                                }
+                                form.classList.add('was-validated');
+                            }, false);
+                        });
+                    }, false);
+                })();
+            </script>
         </div>
 
         <!-- Bootstrap core JavaScript-->
