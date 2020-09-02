@@ -17,3 +17,6 @@ body{
     font-style: italic;
     font-weight: 500 ;
 }
+/* CSS used here will be applied after bootstrap.css */
+
+    

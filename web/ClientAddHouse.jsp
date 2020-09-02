@@ -43,14 +43,14 @@
     </head>
     <body>
         <nav class="navbar navbar-expand-sm navbar-light" style="background-color: #e3f2fd;">
-            <a class="navbar-brand" href="index.html">House-Renting</a>
+            <a class="navbar-brand" href="Home.jsp">House-Renting</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                 <div class="navbar-nav ml-auto" style="margin-right: 20px;">
                     <a class="nav-item nav-link active" href="ClientAddHouse.jsp">Add House</a>
-                    <a class="nav-item nav-link active" href="">View</a> 
+                    <a class="nav-item nav-link active" href="HouseDetails.jsp">House Details</a> 
                     <a class="nav-item nav-link active" href="clientLogin.jsp">LogOut</a> 
                 </div>
             </div>

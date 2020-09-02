@@ -40,11 +40,12 @@ public class ClientLogin extends HttpServlet {
             String username = request.getParameter("login");
             String password = request.getParameter("password");
 
-            String s = "select fname,username, password from clientregister";
+            String s = "select fname,username,password,mobile from clientregister";
             Statement st = con.createStatement();
             ResultSet rs = st.executeQuery(s);
             while (rs.next()) {
                 String fname = rs.getString(1);
+                String mob = rs.getString(4);
                 user = rs.getString(2);
                 pass = rs.getString(3);
 
@@ -52,6 +53,7 @@ public class ClientLogin extends HttpServlet {
                     HttpSession session = request.getSession();
                     session.setAttribute("fname", fname);
                     session.setAttribute("username", username);
+                    session.setAttribute("mobile",mob);
                     pw.println("<script type=\"text/javascript\">");
                     pw.println("alert('Login Successfully..!');");
                     pw.println("window.location.href = \"Home.jsp\";");
