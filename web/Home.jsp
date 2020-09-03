@@ -1,5 +1,6 @@
 <%
     String user = (String) session.getAttribute("username");
+    String mob = (String) session.getAttribute("mobile");
     if (user.equals(null)) {
         session.invalidate();
         response.sendRedirect("clientLogin.jsp");
@@ -197,6 +198,15 @@
                             <h1>Dashboard</h1>
                         </div>
 
+                        <%
+                            try {
+                                Connection con = DatabaseConnection.initializeDatabase();
+                                Statement st = (Statement) con.createStatement();
+                                String query = "select count(*) from addhouse where mobile = '" + mob + "' ";
+                                ResultSet rs = st.executeQuery(query);
+                                while (rs.next()) {
+                                    int house = rs.getInt(1);
+                        %>
                         <!-- Content Row -->
                         <div class="row">
 
@@ -206,17 +216,23 @@
                                     <div class="card-body">
                                         <div class="row no-gutters align-items-center">
                                             <div class="col mr-2">
-                                                <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">----</div>
-                                                <div class="h5 mb-0 font-weight-bold text-gray-800">----</div>
+                                                <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">House</div>
+                                                <div class="h5 mb-0 font-weight-bold text-gray-800"><%= house %></div>
                                             </div>
                                             <div class="col-auto">
-                                                <i class="fas fa-calendar fa-2x text-gray-300"></i>
+                                                <i class="fas fa-home fa-2x"></i>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-
+                            <%
+                                    }
+                                    con.close();
+                                } catch (Exception e) {
+                                    e.printStackTrace();
+                                }
+                            %> 
                             <!-- Earnings (Monthly) Card Example -->
                             <div class="col-xl-3 col-md-6 mb-4">
                                 <div class="card border-left-success shadow h-100 py-2">

@@ -20,7 +20,7 @@
 
         <!-- Bootstrap CSS -->
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-        <link href="css/style.css" rel="stylesheet">
+        
         <title>House Details</title>
         <style>
             body { 
@@ -75,7 +75,7 @@
             %>
             <h1> ${fname}</h1>
         </div>
-        <section class="card-columns" style="display: flex; flex-direction: row; justify-content: flex-start;">
+        <section class="card-columns">
             <%
                 try {
                     Connection con = DatabaseConnection.initializeDatabase();
@@ -83,7 +83,7 @@
                     Statement st = con.createStatement();
                     ResultSet rs = st.executeQuery(s);
                     while (rs.next()) {
-
+                        int id = rs.getInt(10);
             %>
 
             <div class="card" style="width: 18rem; margin-left: 40px; margin-right: 40px;">
@@ -98,10 +98,11 @@
                     <li class="list-group-item"><b>Mobile:&nbsp;&nbsp;</b><%=rs.getString(6)%></li>
                 </ul>
                 <div class="card-body">
-                    <a href="" class="card-link">Edit</a>
-                    <a href="" class="card-link">Delete</a>
+                    <a href="UpdateHouse.jsp?id=<%=id%>" class="card-link">Edit</a>
+                    <a href="DeleteHouse.jsp?id=<%=id%>" class="card-link">Delete</a>
                 </div>
             </div>
+                
 
             <%        }
                 } catch (Exception e) {

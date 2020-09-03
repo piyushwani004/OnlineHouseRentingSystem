@@ -41,7 +41,7 @@ public class AddHouse extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter pw = response.getWriter();
-        
+
         house.setHname(request.getParameter("hname"));
         house.setCategory(request.getParameter("category"));
         house.setBedroom(request.getParameter("bedroom"));
@@ -50,12 +50,13 @@ public class AddHouse extends HttpServlet {
         house.setMobile(request.getParameter("mobile"));
         house.setAddress(request.getParameter("address"));
         house.setDescription(request.getParameter("description"));
+        house.setPrice(request.getParameter("price"));
         Part filePart = request.getPart("photo");
 
         try {
 
             Connection con = DatabaseConnection.initializeDatabase();
-            PreparedStatement ps = con.prepareStatement("insert into addhouse(hname,category,bedroom,email,city,mobile,address,descr,photo) values(?,?,?,?,?,?,?,?,?)");
+            PreparedStatement ps = con.prepareStatement("insert into addhouse(hname,category,bedroom,email,city,mobile,address,descr,photo,price) values(?,?,?,?,?,?,?,?,?,?)");
             ps.setString(1, house.getHname());
             ps.setString(2, house.getCategory());
             ps.setString(3, house.getBedroom());
@@ -66,9 +67,9 @@ public class AddHouse extends HttpServlet {
             ps.setString(8, house.getDescription());
             inputStream = filePart.getInputStream();
             ps.setBlob(9, inputStream);
-
+            ps.setString(10, house.getPrice());
             int i = ps.executeUpdate();
-            
+
             if (i > 0) {
                 pw.println("<script type=\"text/javascript\">");
                 pw.println("alert('House Add Sucessfully');");

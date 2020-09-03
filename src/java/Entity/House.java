@@ -20,9 +20,18 @@ public class House {
     private String mobile;
     private String address;
     private String description;
+    private String price;
 
     public int getId() {
         return id;
+    }
+
+    public String getPrice() {
+        return price;
+    }
+
+    public void setPrice(String price) {
+        this.price = price;
     }
 
     public void setId(int id) {
@@ -95,7 +104,7 @@ public class House {
 
     @Override
     public String toString() {
-        return "House{" + "id=" + id + ", hname=" + hname + ", category=" + category + ", bedroom=" + bedroom + ", email=" + email + ", city=" + city + ", mobile=" + mobile + ", address=" + address + ", description=" + description + '}';
+        return "House{" + "id=" + id + ", hname=" + hname + ", category=" + category + ", bedroom=" + bedroom + ", email=" + email + ", city=" + city + ", mobile=" + mobile + ", address=" + address + ", description=" + description + ", price=" + price + '}';
     }
 
 }
