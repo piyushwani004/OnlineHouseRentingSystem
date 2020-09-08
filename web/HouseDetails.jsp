@@ -93,6 +93,7 @@
                     <p class="card-text"><b>Description:&nbsp;&nbsp;</b><%=rs.getString(8)%></p>
                 </div>
                 <ul class="list-group list-group-flush">
+                    <li class="list-group-item"><b>Price:&nbsp;&nbsp;</b><%=rs.getString(11)%></li>
                     <li class="list-group-item"><b>Category:&nbsp;&nbsp;</b><%=rs.getString(2)%></li>
                     <li class="list-group-item"><b>Bedroom:&nbsp;&nbsp;</b><%=rs.getString(3)%></li>
                     <li class="list-group-item"><b>Mobile:&nbsp;&nbsp;</b><%=rs.getString(6)%></li>

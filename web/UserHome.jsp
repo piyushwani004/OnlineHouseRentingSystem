@@ -1,7 +1,13 @@
+<%-- 
+    Document   : UserHome
+    Created on : 8 Sep, 2020, 2:21:47 PM
+    Author     : Piyush
+--%>
 <%
-    String user = (String) session.getAttribute("username");
-    String mob = (String) session.getAttribute("mobile");
-    if (user.equals(null)) {
+    String name = (String) session.getAttribute("customername");
+    String username = (String) session.getAttribute("customerusername");
+    int cid = (int) session.getAttribute("customerid");
+    if (username.equals(null)) {
         session.invalidate();
         response.sendRedirect("clientLogin.jsp");
     }
@@ -21,7 +27,7 @@
         <meta name="description" content="">
         <meta name="author" content="">
 
-        <title>Client Dashboard</title>
+        <title>Customer Dashboard</title>
 
         <!-- Custom fonts for this template-->
         <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -45,7 +51,7 @@
                     <div class="sidebar-brand-icon rotate-n-15">
                         <i class="fas fa-laugh-wink"></i>
                     </div>
-                    <div class="sidebar-brand-text mx-3">${fname}</div>
+                    <div class="sidebar-brand-text mx-3">${customername}</div>
                 </a>
 
                 <!-- Divider -->
@@ -168,7 +174,7 @@
                             <!-- Nav Item - User Information -->
                             <li class="nav-item dropdown no-arrow">
                                 <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <span class="mr-2 d-none d-lg-inline text-gray-600 small">${fname}</span>
+                                    <span class="mr-2 d-none d-lg-inline text-gray-600 small">${customername}</span>
                                     <i class="fas fa-user"></i>
                                 </a>
                                 <!-- Dropdown - User Information -->
@@ -202,7 +208,7 @@
                             try {
                                 Connection con = DatabaseConnection.initializeDatabase();
                                 Statement st = (Statement) con.createStatement();
-                                String query = "select count(*) from addhouse where mobile = '" + mob + "' ";
+                                String query = "select count(*) from  where mobile = '" + cid + "' ";
                                 ResultSet rs = st.executeQuery(query);
                                 while (rs.next()) {
                                     int house = rs.getInt(1);
@@ -339,10 +345,11 @@
                 </div>
             </div>
         </div>
+        
         <%
             try {
                 Connection con = DatabaseConnection.initializeDatabase();
-                String s = "select * from clientregister where username like '%" + user + "%' ";
+                String s = "select * from  where username like '%" + cid + "%' ";
                 Statement st = con.createStatement();
                 ResultSet rs = st.executeQuery(s);
                 while (rs.next()) {
