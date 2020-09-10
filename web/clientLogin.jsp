@@ -37,8 +37,8 @@
                             Login
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                            <a class="dropdown-item" href="#">Admin Login</a>
-                            <a class="dropdown-item" href="#">Customer Login</a>
+                            <a class="dropdown-item" href="AdminLogin.jsp">Admin Login</a>
+                            <a class="dropdown-item" href="CustomerLogin.jsp">Customer Login</a>
                             <a class="dropdown-item" href="clientLogin.jsp">Client Login</a>
                         </div>
                     </li>

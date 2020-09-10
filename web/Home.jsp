@@ -1,10 +1,6 @@
 <%
     String user = (String) session.getAttribute("username");
     String mob = (String) session.getAttribute("mobile");
-    if (user.equals(null)) {
-        session.invalidate();
-        response.sendRedirect("clientLogin.jsp");
-    }
 %>  
 <%@page import="java.sql.ResultSet"%>
 <%@page import="java.sql.Statement"%>

@@ -1,16 +1,8 @@
-<%-- 
-    Document   : UserHome
-    Created on : 8 Sep, 2020, 2:21:47 PM
-    Author     : Piyush
---%>
 <%
-    String name = (String) session.getAttribute("customername");
     String username = (String) session.getAttribute("customerusername");
-    int cid = (int) session.getAttribute("customerid");
-    if (username.equals(null)) {
-        session.invalidate();
-        response.sendRedirect("clientLogin.jsp");
-    }
+    int id = (int) session.getAttribute("customerid");
+    String name = (String) session.getAttribute("customername");
+    
 %>  
 <%@page import="java.sql.ResultSet"%>
 <%@page import="java.sql.Statement"%>
@@ -27,7 +19,7 @@
         <meta name="description" content="">
         <meta name="author" content="">
 
-        <title>Customer Dashboard</title>
+        <title>Client Dashboard</title>
 
         <!-- Custom fonts for this template-->
         <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -79,11 +71,11 @@
                     </a>
                     <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
                         <div class="bg-white py-2 collapse-inner rounded">
-                            <h6 class="collapse-header">----</h6>
-                            <a class="collapse-item" href="">----</a>
-                            <a class="collapse-item" href="">----</a>
-                            <a class="collapse-item" href="">----</a>
-                            <a class="collapse-item" href="">----</a>
+                            <h6 class="collapse-header"></h6>
+                            <a class="dropdown-item" href="#" data-toggle="modal" data-target="#ProfileModal">
+                                Profile
+                            </a>
+                            <a class="collapse-item" href="">View Clients</a>
                         </div>
                     </div>
                 </li>
@@ -97,14 +89,14 @@
                 <!-- Nav Item - Pages Collapse Menu -->
                 <!-- Nav Item - Charts -->
                 <li class="nav-item">
-                    <a class="nav-link" href="ClientAddHouse.jsp">
+                    <a class="nav-link" href="SearchHouse.jsp">
                         <i class="fas fa-home"></i>
-                        <span>Add House</span></a>
+                        <span>Search House</span></a>
                 </li>
 
                 <!-- Nav Item - Tables -->
                 <li class="nav-item">
-                    <a class="nav-link" href="HouseDetails.jsp">
+                    <a class="nav-link" href="">
                         <i class="fas fa-home"></i>
                         <span>House Details</span></a>
                 </li>
@@ -208,7 +200,7 @@
                             try {
                                 Connection con = DatabaseConnection.initializeDatabase();
                                 Statement st = (Statement) con.createStatement();
-                                String query = "select count(*) from  where mobile = '" + cid + "' ";
+                                String query = "select count(*) from addhouse ";
                                 ResultSet rs = st.executeQuery(query);
                                 while (rs.next()) {
                                     int house = rs.getInt(1);
@@ -222,8 +214,8 @@
                                     <div class="card-body">
                                         <div class="row no-gutters align-items-center">
                                             <div class="col mr-2">
-                                                <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">House</div>
-                                                <div class="h5 mb-0 font-weight-bold text-gray-800"><%= house%></div>
+                                                <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Rent-House</div>
+                                                <div class="h5 mb-0 font-weight-bold text-gray-800"><%= house %></div>
                                             </div>
                                             <div class="col-auto">
                                                 <i class="fas fa-home fa-2x"></i>
@@ -245,7 +237,7 @@
                                     <div class="card-body">
                                         <div class="row no-gutters align-items-center">
                                             <div class="col mr-2">
-                                                <div class="text-xs font-weight-bold text-success text-uppercase mb-1">-----</div>
+                                                <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Wishlist</div>
                                                 <div class="h5 mb-0 font-weight-bold text-gray-800">-----</div>
                                             </div>
                                             <div class="col-auto">
@@ -262,7 +254,7 @@
                                     <div class="card-body">
                                         <div class="row no-gutters align-items-center">
                                             <div class="col mr-2">
-                                                <div class="text-xs font-weight-bold text-info text-uppercase mb-1">----</div>
+                                                <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Add to cart</div>
                                                 <div class="row no-gutters align-items-center">
                                                     <div class="col-auto">
                                                         <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">----</div>
@@ -345,27 +337,25 @@
                 </div>
             </div>
         </div>
-        
         <%
             try {
                 Connection con = DatabaseConnection.initializeDatabase();
-                String s = "select * from  where username like '%" + cid + "%' ";
+                String s = "select * from userregister where id like '%" + id + "%' ";
                 Statement st = con.createStatement();
                 ResultSet rs = st.executeQuery(s);
                 while (rs.next()) {
-
         %>
         <!-- Profile Modal-->
         <div class="modal fade" id="ProfileModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document" >
                 <div class="modal-content">
                     <div class="modal-header" >
-                        <h5 class="modal-title" id="exampleModalLabel">Client Profile</h5>
+                        <h5 class="modal-title" id="exampleModalLabel">${customername} Profile</h5>
                         <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">×</span>
                         </button>
                     </div>
-                    <form action="<%=request.getContextPath()%>/EditClientProfile"  method="post" class="modal-body" novalidate>
+                    <form action="<%=request.getContextPath()%>/EditUserProfile"  method="post" class="modal-body" novalidate>
                         <div class="form-row">
                             <div class="col-md-6 mb-3">
                                 <label for="validationCustom01">First name</label>

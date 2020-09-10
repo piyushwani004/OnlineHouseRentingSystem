@@ -1,3 +1,5 @@
+<%@page import="java.util.Base64"%>
+<%@page import="java.sql.Blob"%>
 <%
     String user = (String) session.getAttribute("username");
     String mob = (String) session.getAttribute("mobile");
@@ -20,7 +22,7 @@
 
         <!-- Bootstrap CSS -->
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-        
+
         <title>House Details</title>
         <style>
             body { 
@@ -34,8 +36,6 @@
                 padding: 20px;
                 margin: 20px;
                 background-color: #transparent;
-
-
             }
             .Cheadline{
                 color: hotpink;
@@ -52,6 +52,13 @@
                 font-family: cursive;
                 font-weight: bold;
             }
+            .card .avatar {       
+                width: 285px;
+                height: 100px;       
+            }
+            .card .avatar img {
+                width: 100%;
+            }	
         </style>
     </head>
     <body>
@@ -70,6 +77,12 @@
         </nav>
         <div class="Cheadline">
             <%
+                Blob blob = null;
+                byte[] imgData = null;
+                Connection con = null;
+                String image;
+            %>
+            <%
                 HttpSession sess = request.getSession(false);
                 sess.getAttribute("fname");
             %>
@@ -78,7 +91,7 @@
         <section class="card-columns">
             <%
                 try {
-                    Connection con = DatabaseConnection.initializeDatabase();
+                    con = DatabaseConnection.initializeDatabase();
                     String s = "select * from addhouse where mobile like '%" + mob + "%' ";
                     Statement st = con.createStatement();
                     ResultSet rs = st.executeQuery(s);
@@ -86,13 +99,21 @@
                         int id = rs.getInt(10);
             %>
 
-            <div class="card" style="width: 18rem; margin-left: 40px; margin-right: 40px;">
-                <img src="img/i2.jpg" class="card-img-top" alt="...">
+            <div class="card" style="width: 18rem; margin-left: 40px; margin-right: 40px; margin-top: 100px;">
+                <div class="avatar">
+                    <%
+                        blob = rs.getBlob(9);
+                        byte[] imageBytes = blob.getBytes(1, (int) blob.length());
+                        String encodedImage = Base64.getEncoder().encodeToString(imageBytes);
+                        image = "data:image/jpg;base64," + encodedImage;
+                        out.print("<img src=" + image + ">");
+                    %>
+                </div>
                 <div class="card-body">
-                    <h5 class="card-title">Title:&nbsp;&nbsp;<%=rs.getString(1)%></h5>
-                    <p class="card-text"><b>Description:&nbsp;&nbsp;</b><%=rs.getString(8)%></p>
                 </div>
                 <ul class="list-group list-group-flush">
+                    <li class="list-group-item"><b>Title:&nbsp;&nbsp;</b><%=rs.getString(1)%></li>
+                    <li class="list-group-item"><b>Description:&nbsp;&nbsp;</b><%=rs.getString(8)%></li>
                     <li class="list-group-item"><b>Price:&nbsp;&nbsp;</b><%=rs.getString(11)%></li>
                     <li class="list-group-item"><b>Category:&nbsp;&nbsp;</b><%=rs.getString(2)%></li>
                     <li class="list-group-item"><b>Bedroom:&nbsp;&nbsp;</b><%=rs.getString(3)%></li>
@@ -103,7 +124,7 @@
                     <a href="DeleteHouse.jsp?id=<%=id%>" class="card-link">Delete</a>
                 </div>
             </div>
-                
+
 
             <%        }
                 } catch (Exception e) {
