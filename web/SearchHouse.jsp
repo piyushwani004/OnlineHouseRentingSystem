@@ -54,6 +54,15 @@
                 outline: none;
                 box-shadow: none;
             }
+            .footer {
+                position: fixed;
+                left: 0;
+                bottom: 0;
+                width: 100%;
+                background-color: red;
+                color: white;
+                text-align: center;
+            }
         </style>
     </head>
 
@@ -271,7 +280,7 @@
                     </section>
 
                     <!-- Footer -->
-                    <footer class="sticky-footer" style="background-color: transparent;">
+                    <footer class="footer" style="background-color: transparent;">
                         <div class="container my-auto">
                             <div class="copyright text-center my-auto" style="color: white">
                                 <span>Copyright &copy; <a href="https://piyushwani004.github.io/portfolio/" style="color: white;"> Piyush047 </a></span>
