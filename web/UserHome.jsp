@@ -2,7 +2,7 @@
     String username = (String) session.getAttribute("customerusername");
     int id = (int) session.getAttribute("customerid");
     String name = (String) session.getAttribute("customername");
-    
+
 %>  
 <%@page import="java.sql.ResultSet"%>
 <%@page import="java.sql.Statement"%>
@@ -27,7 +27,8 @@
 
         <!-- Custom styles for this template-->
         <link href="css/sb-admin-2.min.css" rel="stylesheet">
-
+        <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+        <link href="vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
     </head>
 
     <body id="page-top">
@@ -196,8 +197,7 @@
                             <h1>Dashboard</h1>
                         </div>
 
-                        <%
-                            try {
+                        <%                            try {
                                 Connection con = DatabaseConnection.initializeDatabase();
                                 Statement st = (Statement) con.createStatement();
                                 String query = "select count(*) from addhouse ";
@@ -215,7 +215,7 @@
                                         <div class="row no-gutters align-items-center">
                                             <div class="col mr-2">
                                                 <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Rent-House</div>
-                                                <div class="h5 mb-0 font-weight-bold text-gray-800"><%= house %></div>
+                                                <div class="h5 mb-0 font-weight-bold text-gray-800"><%= house%></div>
                                             </div>
                                             <div class="col-auto">
                                                 <i class="fas fa-home fa-2x"></i>
@@ -259,11 +259,7 @@
                                                     <div class="col-auto">
                                                         <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">----</div>
                                                     </div>
-                                                    <div class="col">
-                                                        <div class="progress progress-sm mr-2">
-                                                            <div class="progress-bar bg-info" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
-                                                        </div>
-                                                    </div>
+                                                    
                                                 </div>
                                             </div>
                                             <div class="col-auto">
@@ -297,6 +293,72 @@
 
                 </div>
                 <!-- End of Main Content -->
+
+
+                <div class="container-fluid">
+                    <!-- DataTales Example -->
+                    <div class="card shadow mb-4">
+                        <div class="card-header py-3">
+                            <h6 class="m-0 font-weight-bold text-primary">House List</h6>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                    <thead>
+                                        <tr>
+                                            <th>House Name</th>
+                                            <th>Category</th>
+                                            <th>Bedroom</th>
+                                            <th>Mobile</th>
+                                            <th>City</th>
+                                            <th>Address</th>
+                                            <th>Price</th>
+                                        </tr>
+                                    </thead>
+                                    <tfoot>
+                                        <tr>
+                                            <th>House Name</th>
+                                            <th>Category</th>
+                                            <th>Bedroom</th>
+                                            <th>Mobile</th>
+                                            <th>City</th>
+                                            <th>Address</th>
+                                            <th>Price</th>
+                                        </tr>
+                                    </tfoot>
+                                    <tbody>
+                                        <%
+                                            try {
+                                                Connection con = DatabaseConnection.initializeDatabase();
+                                                Statement st = (Statement) con.createStatement();
+                                                String sql = "select * from addhouse ";
+                                                ResultSet rs = st.executeQuery(sql);
+                                                while (rs.next()) {
+                                                    String mobileno = rs.getString(6);
+                                        %>
+                                        <tr>
+                                            <td><%=rs.getString(1)%></td>
+                                            <td><%=rs.getString(2)%></td>
+                                            <td><%=rs.getString(3)%></td>
+                                            <td><%=rs.getString(6)%></td>
+                                            <td><%=rs.getString(5)%></td>
+                                            <td><%=rs.getString(7)%></td>
+                                            <td><%=rs.getString(11)%>&nbsp;RS</td>
+                                        </tr>
+                                        <%
+                                                }
+                                                con.close();
+                                            } catch (Exception e) {
+                                                e.printStackTrace();
+                                            }
+                                        %>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
 
                 <!-- Footer -->
                 <footer class="sticky-footer" style="background-color: transparent;">
@@ -412,8 +474,6 @@
                 }
             %>
 
-
-
             <script>
                 // Example starter JavaScript for disabling form submissions if there are invalid fields
                 (function () {
@@ -446,6 +506,12 @@
         <!-- Custom scripts for all pages-->
         <script src="js/sb-admin-2.min.js"></script>
 
+        <!-- Page level plugins -->
+        <script src="vendor/datatables/jquery.dataTables.min.js"></script>
+        <script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
+
+        <!-- Page level custom scripts -->
+        <script src="js/datatables-demo.js"></script>
     </body>
 
 </html>

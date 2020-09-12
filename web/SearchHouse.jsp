@@ -269,7 +269,8 @@
                                 <li class="list-group-item"><b>Mobile:&nbsp;&nbsp;</b><%=rs.getString(6)%></li>
                             </ul>
                             <div class="card-body">
-
+                                <a href=""><i class="fa-angle-up "></i></a>
+                                <a href=""><i class="fa-angle-up "></i></a>
                             </div>
                         </div>
                         <%        }
@@ -392,6 +393,9 @@
                 }
             %>
 
+            
+            
+            
 
 
             <script>

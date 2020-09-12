@@ -122,6 +122,7 @@
                 <div class="card-body">
                     <a href="UpdateHouse.jsp?id=<%=id%>" class="card-link">Edit</a>
                     <a href="DeleteHouse.jsp?id=<%=id%>" class="card-link">Delete</a>
+                   
                 </div>
             </div>
 
