@@ -54,15 +54,7 @@
                 outline: none;
                 box-shadow: none;
             }
-            .footer {
-                position: fixed;
-                left: 0;
-                bottom: 0;
-                width: 100%;
-                background-color: red;
-                color: white;
-                text-align: center;
-            }
+
         </style>
     </head>
 
@@ -229,7 +221,7 @@
                             byte[] imgData = null;
                             Connection con = null;
                             String image;
-
+                            String mobile = "";
                         %>
                         <h1> ${fname}</h1>
                     </div>
@@ -246,11 +238,11 @@
                                 Statement st = con.createStatement();
                                 ResultSet rs = st.executeQuery(sql);
                                 while (rs.next()) {
-
+                                    mobile = rs.getString(6);
                         %>
-                        <div class="card" style="width: 350px;; margin-left: 40px; margin-right: 40px; margin-top: 100px;">
+                        <div class="card" style="width: 350px;; margin-left: 40px; margin-right: 40px; margin-top: 50px;">
                             <div class="avatar">
-                                <%                        blob = rs.getBlob(9);
+                                <%  blob = rs.getBlob(9);
                                     byte[] imageBytes = blob.getBytes(1, (int) blob.length());
                                     String encodedImage = Base64.getEncoder().encodeToString(imageBytes);
                                     image = "data:image/jpg;base64," + encodedImage;
@@ -269,8 +261,9 @@
                                 <li class="list-group-item"><b>Mobile:&nbsp;&nbsp;</b><%=rs.getString(6)%></li>
                             </ul>
                             <div class="card-body">
-                                <a href=""><i class="fa-angle-up "></i></a>
-                                <a href=""><i class="fa-angle-up "></i></a>
+                                <a href=""><i class="fas fa-heart fa-2x"></i></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                <a href=""><i class="fas fa-cart-plus fa-2x"></i></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+                                <a href="ClientDetail.jsp?mob=<%=mobile%>"><i class="fas fa-eye fa-2x"></i></a>
                             </div>
                         </div>
                         <%        }
@@ -281,7 +274,7 @@
                     </section>
 
                     <!-- Footer -->
-                    <footer class="footer" style="background-color: transparent;">
+                    <footer class="sticky-footer" style="background-color: transparent;">
                         <div class="container my-auto">
                             <div class="copyright text-center my-auto" style="color: white">
                                 <span>Copyright &copy; <a href="https://piyushwani004.github.io/portfolio/" style="color: white;"> Piyush047 </a></span>
@@ -319,6 +312,8 @@
                 </div>
             </div>
         </div>
+        <!-- Logout Modal END -->
+
         <%            try {
                 con = DatabaseConnection.initializeDatabase();
                 String s = "select * from userregister where id like '%" + id + "%' ";
@@ -326,7 +321,7 @@
                 ResultSet rs = st.executeQuery(s);
                 while (rs.next()) {
         %>
-        <!-- Profile Modal-->
+        <!-- Profile Modal START -->
         <div class="modal fade" id="ProfileModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document" >
                 <div class="modal-content">
@@ -392,33 +387,30 @@
 
                 }
             %>
-
-            
-            
-            
-
-
-            <script>
-                // Example starter JavaScript for disabling form submissions if there are invalid fields
-                (function () {
-                    'use strict';
-                    window.addEventListener('load', function () {
-                        // Fetch all the forms we want to apply custom Bootstrap validation styles to
-                        var forms = document.getElementsByClassName('needs-validation');
-                        // Loop over them and prevent submission
-                        var validation = Array.prototype.filter.call(forms, function (form) {
-                            form.addEventListener('submit', function (event) {
-                                if (form.checkValidity() === false) {
-                                    event.preventDefault();
-                                    event.stopPropagation();
-                                }
-                                form.classList.add('was-validated');
-                            }, false);
-                        });
-                    }, false);
-                })();
-            </script>
         </div>
+        <!-- Profile Modal END  -->
+
+        <script>
+            // Example starter JavaScript for disabling form submissions if there are invalid fields
+            (function () {
+                'use strict';
+                window.addEventListener('load', function () {
+                    // Fetch all the forms we want to apply custom Bootstrap validation styles to
+                    var forms = document.getElementsByClassName('needs-validation');
+                    // Loop over them and prevent submission
+                    var validation = Array.prototype.filter.call(forms, function (form) {
+                        form.addEventListener('submit', function (event) {
+                            if (form.checkValidity() === false) {
+                                event.preventDefault();
+                                event.stopPropagation();
+                            }
+                            form.classList.add('was-validated');
+                        }, false);
+                    });
+                }, false);
+            })();
+        </script>
+
 
         <!-- Bootstrap core JavaScript-->
         <script src="vendor/jquery/jquery.min.js"></script>

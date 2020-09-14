@@ -237,7 +237,7 @@
                                     <div class="card-body">
                                         <div class="row no-gutters align-items-center">
                                             <div class="col mr-2">
-                                                <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Wishlist</div>
+                                                <div class="text-xs font-weight-bold text-success text-uppercase mb-1">like</div>
                                                 <div class="h5 mb-0 font-weight-bold text-gray-800">-----</div>
                                             </div>
                                             <div class="col-auto">
@@ -259,7 +259,7 @@
                                                     <div class="col-auto">
                                                         <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">----</div>
                                                     </div>
-                                                    
+
                                                 </div>
                                             </div>
                                             <div class="col-auto">
@@ -313,6 +313,7 @@
                                             <th>City</th>
                                             <th>Address</th>
                                             <th>Price</th>
+                                            <th>Client</th>
                                         </tr>
                                     </thead>
                                     <tfoot>
@@ -324,6 +325,7 @@
                                             <th>City</th>
                                             <th>Address</th>
                                             <th>Price</th>
+                                            <th>Client</th>
                                         </tr>
                                     </tfoot>
                                     <tbody>
@@ -344,6 +346,7 @@
                                             <td><%=rs.getString(5)%></td>
                                             <td><%=rs.getString(7)%></td>
                                             <td><%=rs.getString(11)%>&nbsp;RS</td>
+                                            <td><a href="ClientDetail.jsp?mob=<%= mobileno%>"><i class="fas fa-eye fa-2x"></i></a></td>
                                         </tr>
                                         <%
                                                 }
