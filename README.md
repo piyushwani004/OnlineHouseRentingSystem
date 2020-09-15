@@ -1,9 +1,5 @@
 # OnlineHouseRentingSystem
-House rental portal is a webpage where house owners, clients, customers can exchange information effectively and inexpensively.
-
-Provides user-friendly interface, satisfying the needs of the consumers.
-
-Employs a new strategy that facilitates easy management of rental houses.
+House rental portal is a webpage where house owners, clients, customers can exchange information effectively and inexpensively.Provides user-friendly interface, satisfying the needs of the consumers.Employs a new strategy that facilitates easy management of rental houses.
 
 
 MODULES:
