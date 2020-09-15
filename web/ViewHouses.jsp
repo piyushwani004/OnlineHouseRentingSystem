@@ -72,7 +72,9 @@
                         <div class="bg-white py-2 collapse-inner rounded">
                             <h6 class="collapse-header"></h6>
                             <a class="collapse-item" href="AdminDashboard.jsp">Home</a>
-                            <a class="collapse-item" href="">----</a>
+                            <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+                                Logout
+                            </a>
                             <a class="collapse-item" href="">----</a>
                             <a class="collapse-item" href="">----</a>
                         </div>
@@ -98,6 +100,12 @@
                     <a class="nav-link" href="ViewUsers.jsp">
                         <i class="fas fa-home"></i>
                         <span>Users</span></a>
+                </li>
+                
+                <li class="nav-item">
+                    <a class="nav-link" href="ViewHouses.jsp">
+                        <i class="fas fa-home"></i>
+                        <span>Houses</span></a>
                 </li>
 
                 <!-- Divider -->
@@ -206,7 +214,7 @@
                                                 <th>City</th>
                                                 <th>Address</th>
                                                 <th>Price</th>
-                                                
+
                                             </tr>
                                         </thead>
                                         <tfoot>
@@ -218,7 +226,7 @@
                                                 <th>City</th>
                                                 <th>Address</th>
                                                 <th>Price</th>
-                                                
+
                                             </tr>
                                         </tfoot>
                                         <tbody>
@@ -239,7 +247,7 @@
                                                 <td><%=rs.getString(5)%></td>
                                                 <td><%=rs.getString(7)%></td>
                                                 <td><%=rs.getString(11)%>&nbsp;RS</td>
-                                                
+
                                             </tr>
                                             <%
                                                     }

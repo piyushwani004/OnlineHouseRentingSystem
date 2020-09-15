@@ -71,8 +71,10 @@
                     <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
                         <div class="bg-white py-2 collapse-inner rounded">
                             <h6 class="collapse-header"></h6>
-                           <a class="collapse-item" href="AdminDashboard.jsp">Home</a>
-                            <a class="collapse-item" href="">----</a>
+                            <a class="collapse-item" href="AdminDashboard.jsp">Home</a>
+                            <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+                                Logout
+                            </a>
                             <a class="collapse-item" href="">----</a>
                             <a class="collapse-item" href="">----</a>
                         </div>
@@ -89,7 +91,7 @@
                 <!-- Nav Item - Charts -->
                 <li class="nav-item">
                     <a class="nav-link" href="ViewClients.jsp">
-                       <i class="fas fa-user"></i>
+                        <i class="fas fa-user"></i>
                         <span>Clients</span></a>
                 </li>
 
@@ -98,6 +100,12 @@
                     <a class="nav-link" href="ViewUsers.jsp">
                         <i class="fas fa-user"></i>
                         <span>Users</span></a>
+                </li>
+                
+                <li class="nav-item">
+                    <a class="nav-link" href="ViewHouses.jsp">
+                        <i class="fas fa-home"></i>
+                        <span>Houses</span></a>
                 </li>
 
                 <!-- Divider -->

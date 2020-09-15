@@ -18,7 +18,7 @@
         <meta name="description" content="">
         <meta name="author" content="">
 
-        <title>Client Dashboard</title>
+        <title>Admin Dashboard</title>
 
         <!-- Custom fonts for this template-->
         <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -72,7 +72,9 @@
                         <div class="bg-white py-2 collapse-inner rounded">
                             <h6 class="collapse-header"></h6>
                             <a class="collapse-item" href="AdminDashboard.jsp">Home</a>
-                            <a class="collapse-item" href="">----</a>
+                            <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+                                Logout
+                            </a>
                             <a class="collapse-item" href="">----</a>
                             <a class="collapse-item" href="">----</a>
                         </div>
@@ -89,14 +91,14 @@
                 <!-- Nav Item - Charts -->
                 <li class="nav-item">
                     <a class="nav-link" href="ViewClients.jsp">
-                        <i class="fas fa-home"></i>
+                        <i class="fas fa-user fa-2x"></i>
                         <span>Clients</span></a>
                 </li>
 
                 <!-- Nav Item - Tables -->
                 <li class="nav-item">
                     <a class="nav-link" href="ViewUsers.jsp">
-                        <i class="fas fa-home"></i>
+                        <i class="fas fa-user fa-2x"></i>
                         <span>Users</span></a>
                 </li>
 
@@ -105,7 +107,7 @@
                         <i class="fas fa-home"></i>
                         <span>Houses</span></a>
                 </li>
-                
+
                 <!-- Divider -->
                 <hr class="sidebar-divider d-none d-md-block">
 
@@ -198,21 +200,28 @@
 
                         <!-- Page Heading -->
                         <div class="d-sm-flex align-items-center justify-content-between mb-4" style="color: white">
-                            <h1>Dashboard</h1>
+                            <h1> Admin Dashboard</h1>
                         </div>
 
 
                         <!-- Content Row -->
                         <div class="row">
-
+                            <%                            try {
+                                    Connection con = DatabaseConnection.initializeDatabase();
+                                    Statement st = (Statement) con.createStatement();
+                                    String query = "select count(*) from addhouse ";
+                                    ResultSet rs = st.executeQuery(query);
+                                    while (rs.next()) {
+                                        int house = rs.getInt(1);
+                            %>
                             <!-- Earnings (Monthly) Card Example -->
                             <div class="col-xl-3 col-md-6 mb-4">
                                 <div class="card border-left-primary shadow h-100 py-2">
                                     <div class="card-body">
                                         <div class="row no-gutters align-items-center">
                                             <div class="col mr-2">
-                                                <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">----</div>
-                                                <div class="h5 mb-0 font-weight-bold text-gray-800">----</div>
+                                                <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">House</div>
+                                                <div class="h5 mb-0 font-weight-bold text-gray-800"><%= house%></div>
                                             </div>
                                             <div class="col-auto">
                                                 <i class="fas fa-home fa-2x"></i>
@@ -221,50 +230,82 @@
                                     </div>
                                 </div>
                             </div>
-
+                            <%
+                                    }
+                                    con.close();
+                                } catch (Exception e) {
+                                    e.printStackTrace();
+                                }
+                            %> 
+                            <%                            try {
+                                    Connection con = DatabaseConnection.initializeDatabase();
+                                    Statement st = (Statement) con.createStatement();
+                                    String query = "select count(*) from clientregister ";
+                                    ResultSet rs = st.executeQuery(query);
+                                    while (rs.next()) {
+                                        int Client = rs.getInt(1);
+                            %>
                             <!-- Earnings (Monthly) Card Example -->
                             <div class="col-xl-3 col-md-6 mb-4">
                                 <div class="card border-left-success shadow h-100 py-2">
                                     <div class="card-body">
                                         <div class="row no-gutters align-items-center">
                                             <div class="col mr-2">
-                                                <div class="text-xs font-weight-bold text-success text-uppercase mb-1">-----</div>
-                                                <div class="h5 mb-0 font-weight-bold text-gray-800">-----</div>
+                                                <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Client</div>
+                                                <div class="h5 mb-0 font-weight-bold text-gray-800"><%= Client%></div>
                                             </div>
                                             <div class="col-auto">
-                                                <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+                                                <i class="fas fa-user fa-2x"></i>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-
+                            <%
+                                    }
+                                    con.close();
+                                } catch (Exception e) {
+                                    e.printStackTrace();
+                                }
+                            %> 
+                            <%                            try {
+                                    Connection con = DatabaseConnection.initializeDatabase();
+                                    Statement st = (Statement) con.createStatement();
+                                    String query = "select count(*) from userregister ";
+                                    ResultSet rs = st.executeQuery(query);
+                                    while (rs.next()) {
+                                        int Client = rs.getInt(1);
+                            %>
                             <!-- Earnings (Monthly) Card Example -->
                             <div class="col-xl-3 col-md-6 mb-4">
                                 <div class="card border-left-info shadow h-100 py-2">
                                     <div class="card-body">
                                         <div class="row no-gutters align-items-center">
                                             <div class="col mr-2">
-                                                <div class="text-xs font-weight-bold text-info text-uppercase mb-1">----</div>
+                                                <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Users</div>
                                                 <div class="row no-gutters align-items-center">
                                                     <div class="col-auto">
-                                                        <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">----</div>
+                                                        <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800"><%= Client%></div>
                                                     </div>
                                                     <div class="col">
-                                                        <div class="progress progress-sm mr-2">
-                                                            <div class="progress-bar bg-info" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
-                                                        </div>
+
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="col-auto">
-                                                <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
+                                                <i class="fas fa-user fa-2x"></i>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-
+                            <%
+                                    }
+                                    con.close();
+                                } catch (Exception e) {
+                                    e.printStackTrace();
+                                }
+                            %> 
                             <!-- Pending Requests Card Example -->
                             <div class="col-xl-3 col-md-6 mb-4">
                                 <div class="card border-left-warning shadow h-100 py-2">
