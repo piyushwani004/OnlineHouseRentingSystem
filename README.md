@@ -24,3 +24,31 @@ People migrating to other cities or states either for different purposes.
 Finding a shelter, which fits all the requirements of the customer is hard, most of them don’t match their needs.
 
 
+Project Screenshots :
+
+
+1]login page
+![OnlineHouseRentingSystem - Google Chrome 15-09-2020 02_00_46 PM](https://user-images.githubusercontent.com/56467741/93248558-fef96d80-f75d-11ea-855b-8460e9083e59.png)
+
+
+2]Client Dashboard
+![OnlineHouseRentingSystem - Google Chrome 15-09-2020 01_59_42 PM](https://user-images.githubusercontent.com/56467741/93248632-18021e80-f75e-11ea-948e-05d7ab5462b6.png)
+
+
+3]Adding House Detail page
+![OnlineHouseRentingSystem - Google Chrome 15-09-2020 01_55_59 PM](https://user-images.githubusercontent.com/56467741/93248682-2fd9a280-f75e-11ea-99de-f98087d0e29c.png)
+
+
+4]Show House Detals 
+![OnlineHouseRentingSystem - Google Chrome 15-09-2020 01_54_33 PM](https://user-images.githubusercontent.com/56467741/93248729-4253dc00-f75e-11ea-9f5a-42a9ba90602b.png)
+
+
+5]Show House-Owner Details
+![OnlineHouseRentingSystem - Google Chrome 15-09-2020 01_53_53 PM](https://user-images.githubusercontent.com/56467741/93248761-4e3f9e00-f75e-11ea-8cbf-055d849df806.png)
+
+
+6]User Dashboard
+![OnlineHouseRentingSystem - Google Chrome 15-09-2020 02_01_00 PM](https://user-images.githubusercontent.com/56467741/93248778-5566ac00-f75e-11ea-953d-927b88d2c887.png)
+
+7]
+![OnlineHouseRentingSystem - Google Chrome 15-09-2020 02_00_53 PM](https://user-images.githubusercontent.com/56467741/93248795-5a2b6000-f75e-11ea-91cb-67f1e152be10.png)
