@@ -60,7 +60,7 @@
                 </div>
 
                 <!-- Login Form -->
-                <form action="<%=request.getContextPath()%>/" method="get">
+                <form action="<%=request.getContextPath()%>/AdminLogin" method="post">
                     <input type="text" id="login" class="fadeIn second" name="login" placeholder="login" style="margin-top: 10px;">
                     <input type="password" id="password" class="fadeIn third" name="password" placeholder="password">
                     <input type="submit" class="fadeIn fourth" value="Log In">
@@ -68,7 +68,7 @@
 
                 <!-- Remind Passowrd -->
                 <div id="formFooter">
-                    <a class="underlineHover" href="ClientRegister.jsp">Create Account</a>
+                    <a class="underlineHover" href="AdminRegister.jsp">Create Account</a>
                 </div>
             </div>
         </div>
