@@ -28,6 +28,11 @@ Project Screenshots :
 
 
 1]login page
+![OnlineHouseRentingSystem - Google Chrome 15-09-2020 01_53_53 PM](https://user-images.githubusercontent.com/56467741/93248761-4e3f9e00-f75e-11ea-8cbf-055d849df806.png)
+
+
+
+
 ![OnlineHouseRentingSystem - Google Chrome 15-09-2020 02_00_46 PM](https://user-images.githubusercontent.com/56467741/93248558-fef96d80-f75d-11ea-855b-8460e9083e59.png)
 
 
@@ -61,7 +66,7 @@ Project Screenshots :
 
 
 5]Show House-Owner Details
-![OnlineHouseRentingSystem - Google Chrome 15-09-2020 01_53_53 PM](https://user-images.githubusercontent.com/56467741/93248761-4e3f9e00-f75e-11ea-8cbf-055d849df806.png)
+
 
 
 6]User Dashboard
