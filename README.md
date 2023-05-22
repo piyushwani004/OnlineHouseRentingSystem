@@ -1,6 +1,7 @@
 # OnlineHouseRentingSystem
 House rental portal is a webpage where house owners, clients, customers can exchange information effectively and inexpensively.Provides user-friendly interface, satisfying the needs of the consumers.Employs a new strategy that facilitates easy management of rental houses.
 
+Know about more details [MyBlog](https://www.inaminutes.com/how-can-i-import-a-git-repository-into-eclipse-ide/#more-1701)
 
 # MODULES:
 
@@ -23,6 +24,7 @@ The housing sector remains vigilant to face the challenges of the change of the 
 People migrating to other cities or states either for different purposes.
 Finding a shelter, which fits all the requirements of the customer is hard, most of them don’t match their needs.
 
+Know more details [MyBlog](https://www.inaminutes.com/)
 
 # Project Screenshots :
 
