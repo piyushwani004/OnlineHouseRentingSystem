@@ -26,6 +26,13 @@ Finding a shelter, which fits all the requirements of the customer is hard, most
 
 Know more details [MyBlog](https://www.inaminutes.com/)
 
+## Want to Contribute?
+Created something awesome, made this code better, added some functionality, or whatever (this is the hardest part).
+Fork it.
+Create new branch to contribute your changes.
+Commit all your changes to your branch.
+Submit a pull request.
+
 # Project Screenshots :
 
 ![OnlineHouseRentingSystem - Google Chrome 15-09-2020 01_53_53 PM](https://user-images.githubusercontent.com/56467741/93248761-4e3f9e00-f75e-11ea-8cbf-055d849df806.png)
