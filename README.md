@@ -27,11 +27,11 @@ Finding a shelter, which fits all the requirements of the customer is hard, most
 Know more details [MyBlog](https://www.inaminutes.com/)
 
 ## Want to Contribute?
-Created something awesome, made this code better, added some functionality, or whatever (this is the hardest part).
-Fork it.
-Create new branch to contribute your changes.
-Commit all your changes to your branch.
-Submit a pull request.
+- Created something awesome, made this code better, added some functionality, or whatever (this is the hardest part).
+- [Fork it](http://help.github.com/forking/).
+- Create new branch to contribute your changes.
+- Commit all your changes to your branch.
+- Submit a [pull request](http://help.github.com/pull-requests/).
 
 # Project Screenshots :
 
